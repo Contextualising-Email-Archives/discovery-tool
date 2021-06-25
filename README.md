@@ -12,4 +12,4 @@ The Data_pre_processing folder contains a python file for preprocessing the code
 The Exploratory_data_analysis folder consists of a EDA.py file. This is best open in an ipython environment.
 Instructions are in the EDA_readme.txt within this folder.
 
-
+Please be aware that this folder is not supplied with requirements.txt as most of the versions have changed over the project duration and hardware resources used. Please follow the configuration needed for the bert-serving-client work on your machine. 
