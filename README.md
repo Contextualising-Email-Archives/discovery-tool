@@ -9,4 +9,5 @@ first step is to - Open the Data_pre_processing folder and pre process the data.
 
 The Data_pre_processing folder contains a python file for preprocessing the code. Instructions needed to run this file are given in the DataProcess_readme.txt in the same folder
 
-
+The Exploratory_data_analysis folder consists of a EDA.py file. This is best open in an ipython environment.
+Instructions are in the EDA_readme.txt within this folder.

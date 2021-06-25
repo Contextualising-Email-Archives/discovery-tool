@@ -12,10 +12,11 @@ You will be propted to give input 1 if you are working on Windows, '2' for Linux
 
 9. The dataset contains the mailboxes of 150 custodians. You will be notified about it. (data validation check)
 10. System performs date format conversion appropriate for the processing.
-A default date is set to '2222/01/01' (YYYY/MM/DD) . But this dataset should have no default values.
+A default date is set to '2222/01/01' (YYYY/MM/DD) . But this enron dataset should have no default values.
 
-11. Next, please specify an output path when prompted. Do not forget to include '/' towards the end.
-12. The processed output is saved as a pickle file at output/path/Enron_full.pkl. 
+11. Next, please specify an output folder path when prompted. Do not forget to include '/' towards the end.
+12. The processed output will be saved as a pickle file at output/folder/Enron_full.pkl. 
 
 13. Next process is to create folders of Lay-k and Skilling-J. You will be prompted when done.
+14. Please remember all pre-processed output files are stored in the same output folder you have specified.
 
