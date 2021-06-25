@@ -27,6 +27,7 @@ spacy_stopwords = spacy.lang.en.stop_words.STOP_WORDS
 nlp = spacy.blank('en')
 matcher = PhraseMatcher(nlp.vocab, attr='LOWER')
 #===============================================================
+#create the output folder
 def ensure_dir(file_path):
     directory = os.path.dirname(file_path)
     if not os.path.exists(directory):
@@ -42,6 +43,7 @@ outPath = dataPath+'Results/Model1/'
 phrases = input('Input phrases to search separated by commas. Please enter atleast one phrase- ')
 phrases_to_search = phrases.split(',')
 
+#===============================================================
 #get dataset to search
 print('Select a dataset')
 dataset = input('Select 1 for the mailbox of Lay.K,\n 2 for the mailbox of Skilling.J \n 3 for Lay+skilling and \n 4 for all mailboxes \n')
@@ -66,8 +68,8 @@ while (True):
             df = meta_content_df
             print('searching in entire Enron\'s dataset. # of mails:', len(df))            
             break
-
-
+#==============================================================================
+# clean the content
 regex = re.compile(r'(FW:|RE:|Re:|re:|fw:|Fw:)') # for subject lines
 df['subject'] = df['subject'].apply(lambda x: regex.sub('', x).strip())
 

@@ -6,7 +6,7 @@ For example, Your/path/ only. Do not include file name.
 5. System will create 'Results' folder in this directory to store the search results.
 
 6. Input phrases to search when prompted separated by commas. Ex: Profit, JEDI, Chewco, Election Bush, President Elections. click ENTER.
-7. 
+WHere posiible do not exceed more than two words (space separated) in the query.
 
 
 
