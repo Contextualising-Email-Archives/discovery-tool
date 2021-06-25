@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block head %}  {% endblock %}
+
+
+{% block body %}
+<h1> Email Contextualization Discovery Tool </h1>
+
+<form action="/"  method="POST" >    
+    
+    
+    <br>Include / Exclude following groups
+      
+
+      <div id="Enron_choices" style="display:True;">
+        <ul class="checkbox-grid" > 
+      
+          <li><input type="checkbox"  name="choice11" value="lay-k" /> <label for="choice11">Top Management</label> </li>
+           <li><input type="checkbox"  name="choice11" value="News-Letters"/> <label for="choice13">News Letters</label></li> 
+          <li><input type="checkbox"  name="choice11" value="all"/> <label for="choice15">All</label></li>
+          
+        </ul>
+      </div>
+      
+    
+    <h4>Enter your query here </h4>
+    <input type="text" id="query" name="query" placeholder="Election BUSH" maxlength="54" size="44">
+    
+    <label for="from_date"> From</label><input type="date" id="from_date" name="from_date" value="1996-01-01">
+    <label for="to_date">  To</label> <input type="date" id="to_date" name="to_date" value="2004-01-01">
+    
+    
+    <br><br>
+    
+    <input type="submit" name="search" value="Simple Search" title= "Explore by key-phrase">
+    <input type="submit" name="search" value="Advanced Search" title= "Explore by content">
+    <input type="button" name="needhelp" value="Need help to start?" title="Need help to start?" onclick="assist()">
+    <br><br>
+    <div id="myDIV" style="display:None;" >           
+        <iframe id="myframe"  src="default_page" display = "block" scrolling="auto" height="200" width="450"  title="Assisted search"></iframe>
+        </div>
+    
+    <script>
+        function assist(){
+            var ifr = document.getElementById("myframe");
+            var x = document.getElementById("myDIV");
+            ifr.src= "Enron";
+            x.style.display = "block";
+        }
+    </script> 
+
+  
+     
+    </form>
+   
+    <form action="/Results"  method="POST" > 
+      <h4> Your query will take few minutes to process. Please click Check Results </h4>
+      <br>
+      <input type="submit" name="check1" value="Check Results" title = "check the status">
+
+    </form>
+
+  
+
+  {% if job_meta != 'finished' %}
+  
+  <h4> Status of the query - {{query1}} between {{from_date}} and {{to_date}} is '{{job_meta}}' </h4>
+
+  {% else %}
+
+    {% if results|length < 1 and query1 !='' %}
+      <h4> Search returned NO results </h4>
+    {% elif results|length < 1 and query1 ==''%}     
+        <label> Empty Query .. </label> 
+
+      {% else %}
+      <h4> Query - {{query1}} between {{from_date}} and {{to_date}} </h4>
+
+        {% for row in results %}
+          <button type="button" class="collapsible">Open Email {{ row.id+1 }}</button>
+          <div class="content">
+
+            <table>
+              
+              <tbody></tbody>
+                  <tr><td> <b> FROM </b></td><td><pre>{{ row.from_ }}</pre></td> </tr>
+                  <tr><td> <b> TO </b></td><td><pre>{{ row.to}} </pre></td></tr>
+                  <tr><td><b> CC </b></td><td><pre> {{row.cc}}</pre> </td></tr>
+                  <tr><td> <b> BCC </b></td><td><pre> {{row.bcc}}</pre> </td></tr>
+                  <tr><td> <b>  SENT_DATE </b></td><td><pre> {{row.sent_date.date()}}</pre> </td></tr>
+                  <tr><td> <b> SUBJECT </b></td><td><pre>{{row.subject }}</pre></td></tr>
+                  <tr><td> <b> BODY </b> </td><td><pre> {{row.body_content}} </pre></td></tr>
+                  
+              </tbody>
+
+            </table>
+
+          </div>
+
+        {% endfor %}
+    {% endif %}
+
+
+  {%endif%}
+
+
+
+
+
+
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+coll[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var content = this.nextElementSibling;
+  if (content.style.display === "block") {
+    content.style.display = "none";
+  } else {
+    content.style.display = "block";
+  }
+});
+}
+</script>
+
+   
+
+
+<form action="/TimePlot"  method="POST"> 
+  <input type='submit' value='plot Time Line and Word Cloud' >
+</form>
+
+<div class="row">
+  <div class="column1">
+    <img src="{{ url_for('static', filename= plot2)}}" alt="" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="{{ url_for('static', filename= plot1)}}" alt="" style="width:100%">
+  </div>
+  
+</div>
+
+<!--<object id="plotframe" display=None data="{{ url_for('static', filename= plot)}}" type="application/pdf" style="min-height:100vh;width:100%"></object> -->
+  
+</form>
+
+</body>
+</html>
+
+
+{% endblock %}
+
+
+
