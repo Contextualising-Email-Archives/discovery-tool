@@ -21,6 +21,7 @@ If you are running for the first time, please take the help of a software develo
 15a. The time plot shows the usage of the phrase on the time line and wordcloud shows all relevant words used in those mails to aid your analysis
 
 #How to run this webapp from heroku
-1. Create a heroku login account
-2. Upload the sourcecode to heroku
-3. 
+1. Create a heroku login account, login to heroku cli from your desktop.
+2. Upload the sourcecode to heroku by adding project to git push ($git push heroku master)
+3. Create heroku app
+4. Run from the website provided.
