@@ -2,7 +2,7 @@ This folder contains ECONDIST webapp prototype (Model 1 only ) to run on your de
 If you are running for the first time, please take the help of a software developer with python and webapp development.
 
 #How to run this webapp prototype for Model 1 on your desktop:
-1. Download the sourcecode to your desktop.
+1. Download the sourcecode to your desktop. This app works on Linux type of environments as it needs to spawn worker threads. Not possible on Windows OS.
 2. Requirements.txt contains all required packages to run the desktop.
 2a. for Conda users, the command is *$conda install --file requirements.txt* , else *$pip install -r requirements.txt --target ./lib*
 3. the files Model1.py and Model1_original.py are superfluous. You can add them to .gitignore if you add the project to git.
@@ -16,6 +16,11 @@ If you are running for the first time, please take the help of a software develo
 11. Click on 'Simple Search' (In this version, advanced search i.e Advanced Search is not included)
 12. The search will take sometime depending on the groups you have added.
 13. You may check whether search is done by clicking on the check results periodically.
-14. A list of 25 results will be displayed when search is done.
-15. Once, search is completed, you can click on the plot time line and word cloud for the given search phrase.
+14. A list of up to 25 results will be displayed when search is done (image2.png). Each email result is clickable.
+15. Once, search is completed, scroll down the results to see the button to view time plot and word cloud. You can click on the plot time line and word cloud for the given search phrase (as shown in image3.png).
 15a. The time plot shows the usage of the phrase on the time line and wordcloud shows all relevant words used in those mails to aid your analysis
+
+#How to run this webapp from heroku
+1. Create a heroku login account
+2. Upload the sourcecode to heroku
+3. 
