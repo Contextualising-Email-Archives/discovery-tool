@@ -21,7 +21,7 @@ MarkupSafe==1.1.1
 matplotlib==3.3.3
 mccabe==0.6.1
 murmurhash==1.0.4
-numpy==1.19.4
+numpy==1.21.0
 pandas==1.1.4
 Pillow==8.0.1
 plac==1.1.3
