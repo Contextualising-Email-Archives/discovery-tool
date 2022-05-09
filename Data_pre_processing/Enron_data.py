@@ -1,14 +1,15 @@
 #1. The following code reads data from interesting custodians
 #2. The output dataframe is saved as Enron_full.pkl
 #3. Lay-k and skilling-j at Enron.pkl
-
-import pandas as pd
-import os
 from collections import Counter
-from email.parser import Parser 
-
 from datetime import datetime
 from email import utils
+from email.parser import Parser
+import os
+import sys
+
+import pandas as pd
+
 
 #the following functions reads all emails from people list and creates a dataframe
 def _create_dataframe_from_Enron_folders(dataPath):
@@ -134,8 +135,8 @@ def _get_date(x)   :
     return result
 
 
-dataPath = input('Enter data path: ')  
-#print(dataPath) 
+dataPath = (sys.argv and sys.argv[1]) or input('Enter data path: ')
+print(f"dataPath {dataPath}")
 
 df = _create_dataframe_from_Enron_folders(dataPath)
 
@@ -145,7 +146,9 @@ print('No.of records: ',len(df))
 
 
 #checking with the operating system
-operating_system = input('Enter your operating system: 1 for Windows, 2 for Linux: ')
+operating_system = (sys.argv and sys.argv[2]) or input('Enter your operating system: 1 for Windows, 2 for Linux: ')
+print(f"operating_system: {operating_system}")
+
 if operating_system == '1':
     # on windows
     df['custodian'] = df['public_id'].apply(lambda x: x.split('\\')[0])
@@ -175,7 +178,8 @@ if len(df) == 495554:
 else:
     print('has duplicates')
 
-outputPath = input('Enter output path location: (include / at the end)')
+outputPath = (sys.argv and sys.argv[3]) or input('Enter output path location: (include / at the end)')
+print(f"outputPath: {outputPath}")
 df.to_pickle(outputPath+'Enron_full.pkl')
 print('The processed output is saved at '+outputPath+'Enron_full.pkl')
 print('Please reuse this output to avoid running this whole process again')

@@ -1,3 +1,7 @@
+# Data preprocessing
+
+## Background
+
 1. The Enron_data.py is the data pre-processing file. You have to run this process only once and save the output at a known location.
 2. Download Enron data (May 7, 2015 Version of dataset) from https://www.cs.cmu.edu/~enron/ 
 3. Unzip and save at a known location.
@@ -20,3 +24,14 @@ A default date is set to '2222/01/01' (YYYY/MM/DD) . But this enron dataset shou
 13. Next process is to create folders of Lay-k and Skilling-J. You will be prompted when done.
 14. Please remember all pre-processed output files are stored in the same output folder you have specified.
 
+## Using Docker
+
+    cd Data_pre_processing
+    docker build -t uobristol/emcodist-data-preprocessor .
+    docker run -v "`pwd`":/srv --name preprocessor --rm uobristol/emcodist-data-preprocessor
+
+
+### Update requirements files
+
+    cd Data_pre_processing
+    docker run -v "`pwd`":/srv --name preprocessor-package-updates --rm --entrypoint="" uobristol/emcodist-data-preprocessor pip freeze > requirements.txt
